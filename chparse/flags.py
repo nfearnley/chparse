@@ -1,6 +1,7 @@
 """Enum constants for the package."""
 from enum import Enum, IntFlag
 
+
 class NoteTypes(Enum):
     """Different Note types."""
     EVENT = 'E'
@@ -10,11 +11,13 @@ class NoteTypes(Enum):
     BPM = 'B'
     ANCHOR = 'A'
 
+
 EVENT = NoteTypes.EVENT
 NOTE = NoteTypes.NOTE
 STAR = NoteTypes.STAR
 TIME_SIGNATURE = NoteTypes.TIME_SIGNATURE
 BPM = NoteTypes.BPM
+
 
 class Flags(IntFlag):
     """Possible Note flags."""
@@ -25,12 +28,14 @@ class Flags(IntFlag):
     LIVEFORCED = 8
     NONE = 0
 
+
 FORCED = Flags.FORCED
 TAP = Flags.TAP
 OPEN = Flags.OPEN
 GHLIVE = Flags.GHLIVE
 LIVEFORCED = Flags.LIVEFORCED
 NONE = Flags.NONE
+
 
 class Difficulties(Enum):
     """Possible Instrument difficulties."""
@@ -40,11 +45,13 @@ class Difficulties(Enum):
     EASY = 'Easy'
     NA = None
 
+
 EXPERT = Difficulties.EXPERT
 HARD = Difficulties.HARD
 MEDIUM = Difficulties.MEDIUM
 EASY = Difficulties.EASY
 NA = Difficulties.NA
+
 
 class Instruments(Enum):
     """Possible Instrument kinds."""
@@ -59,6 +66,7 @@ class Instruments(Enum):
     METADATA = 'Song'
     SYNC = 'SyncTrack'
     EVENTS = 'Events'
+
 
 GUITAR = Instruments.GUITAR
 GUITAR_COOP = Instruments.GUITAR_COOP

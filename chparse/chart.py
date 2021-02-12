@@ -2,6 +2,7 @@
 from .instrument import Instrument
 from . import flags
 
+
 class Chart:
     """Represents an entire chart."""
     instruments = {
@@ -67,6 +68,6 @@ class Chart:
 
         for dif, diffic in self.instruments.items():
             if dif == flags.NA:
-                continue #already done
+                continue    # already done
             for inst in diffic.values():
                 fileobj.write(str(inst) + '\n\n')

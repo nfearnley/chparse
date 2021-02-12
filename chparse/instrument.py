@@ -2,6 +2,7 @@
 from .note import Note, Event, SyncEvent
 from . import flags
 
+
 class Instrument(list):
     """Represents a single track (e.g. ExpertSingle)."""
     difficulty = flags.EXPERT
@@ -25,8 +26,7 @@ class Instrument(list):
             try:
                 self.extend(notes)
             except TypeError:
-                raise TypeError('expected iterable notes list, got '
-                                + type(notes).__name__) from None
+                raise TypeError(f'expected iterable notes list, got {type(notes).__name__}') from None
 
     def __repr__(self):
         first_notes = list(self[:5])

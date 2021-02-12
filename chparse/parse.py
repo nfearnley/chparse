@@ -5,9 +5,11 @@ from .instrument import Instrument
 from .chart import Chart
 from . import flags
 
+
 class ParseError(Exception):
     """The chart is invalid."""
     pass
+
 
 def load(fileobj):
     """Load a chart from a file object."""
@@ -26,7 +28,7 @@ def load(fileobj):
                 inst = _parse_raw_inst(fileobj, line)
             except Exception as exc:
                 raise ParseError(str(exc))
-            if isinstance(inst, dict): #metadata arrived
+            if isinstance(inst, dict):  # metadata arrived
                 chart = Chart(inst)
                 for i in instruments:
                     chart.add_instrument(i)
@@ -35,6 +37,7 @@ def load(fileobj):
             else:
                 chart.add_instrument(inst)
     return chart
+
 
 def _parse_raw_inst(fileobj, first_line):
     try:
@@ -79,16 +82,14 @@ def _parse_raw_inst(fileobj, first_line):
             line = fileobj.readline().strip()
             if line in '{}':
                 continue
-            match = re.search(r'([0-9]+)\s*=\s*'
-                              + flags.EVENT.value
-                              + r'\s+("?.*"?)',
-                              line)
+            match = re.search(r'([0-9]+)\s*=\s*' + flags.EVENT.value + r'\s+("?.*"?)', line)
             time = int(match.group(1))
             evt = match.group(2).strip('"')
             inst.append(Event(time, evt))
-            inst.sort() #just in case
+            inst.sort()     # just in case
         return inst
     return None
+
 
 def _parse_inst(fileobj, first_line):
     raw_name = re.match(r'\[([A-Za-z]+)\]', first_line).group(1)
@@ -101,8 +102,7 @@ def _parse_inst(fileobj, first_line):
         line = fileobj.readline().strip()
         if line in '{}':
             continue
-        match = re.search(r'([0-9]+)\s*=\s*([A-Z])\s+'
-                          + r'([0-9]+)\s+([0-9]+)', line)
+        match = re.search(r'([0-9]+)\s*=\s*([A-Z])\s+' + r'([0-9]+)\s+([0-9]+)', line)
         if match is not None:
             time, kind, raw_fret, length = match.groups()
             time, raw_fret, length = int(time), int(raw_fret), int(length)
@@ -127,6 +127,7 @@ def _parse_inst(fileobj, first_line):
                                         line).groups()
             inst.append(Event(int(time), evt.strip('"')))
     return inst
+
 
 def dump(chart, fileobj):
     """Dump a Chart to a file (or other object with a write() method)."""
