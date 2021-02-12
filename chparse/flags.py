@@ -63,9 +63,6 @@ class Instruments(Enum):
     DRUMS = 'Drums'
     GHL_GUITAR = 'GHLGuitar'
     GHL_BASS = 'GHLBass'
-    METADATA = 'Song'
-    SYNC = 'SyncTrack'
-    EVENTS = 'Events'
 
 
 GUITAR = Instruments.GUITAR
@@ -76,6 +73,16 @@ KEYBOARD = Instruments.KEYBOARD
 DRUMS = Instruments.DRUMS
 GHL_GUITAR = Instruments.GHL_GUITAR
 GHL_BASS = Instruments.GHL_BASS
-METADATA = Instruments.METADATA
-SYNC = Instruments.SYNC
-EVENTS = Instruments.EVENTS
+
+
+class Metadata(Enum):
+    SONG = 'Song'
+    SYNC = 'SyncTrack'
+    EVENTS = 'Events'
+    LYRICS = 'PART VOCALS'
+
+
+SONG = Metadata.SONG
+SYNC = Metadata.SYNC
+EVENTS = Metadata.EVENTS
+LYRICS = Metadata.LYRICS
