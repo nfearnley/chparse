@@ -4,10 +4,8 @@ import re
 with open('chparse\\__init__.py') as f:
     content = f.read()
     longdesc = re.match(r'^"""([\s\S]+?)"""', content).group(1).strip()
-    with open('README.rst', 'w') as rdme:
-        rdme.write(longdesc)
     version = re.search(r'__version__\s*=\s*"([^"]+)"', content).group(1)
-del f, rdme
+del f, content
 
 setup(
     name="chparse",
