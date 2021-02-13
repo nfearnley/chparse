@@ -10,7 +10,7 @@ Install the stable build via::
 
 Or install the latest development (unstable) build via::
 
-    git clone https://github.com/Kenny2github/chparse.git
+    git clone https://github.com/nfearnley/chparse.git
     cd chparse
     python setup.py install
 
@@ -30,4 +30,4 @@ Assuming your .chart file is named "notes.chart"...
 from .parse import load, dump   # noqa: F401
 from .flags import *            # noqa: F401,F403 pylint: disable=wildcard-import
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"

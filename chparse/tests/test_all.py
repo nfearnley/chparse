@@ -1,6 +1,5 @@
 """Test various aspects of Pages."""
 from unittest import TestCase
-from sys import version_info
 from os import path
 from io import StringIO
 import chparse
@@ -17,6 +16,7 @@ with open(path.join(path.dirname(__file__), 'Test.chart')) as chartfile:
     CHART = StringIO(chartfile.read())
 
 GLOBALS = {}
+
 
 class TestAll(TestCase):
     """Test everything."""

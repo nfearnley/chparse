@@ -9,7 +9,7 @@ Install the stable build via::
 
 Or install the latest development (unstable) build via::
 
-    git clone https://github.com/Kenny2github/chparse.git
+    git clone https://github.com/nfearnley/chparse.git
     cd chparse
     python setup.py install
 
