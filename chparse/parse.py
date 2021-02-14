@@ -113,18 +113,20 @@ def _parse_lyrics(fileobj):
     return lyrics
 
 
-# Generator to easily parse section lines
-def _section_lines(fileobj):
-    while True:
-        # Read a line from file, stripping it of whitespace
-        line = fileobj.readline().strip()
-        # Ignore open brackets
-        if line == "{":
-            continue
-        # Stop looping after a closing bracket
-        if line == "}":
-            break
-        yield line
+def _parse_lyric_note(line):
+    match = RE_NOTE.match(line)
+    if match is None:
+        return None
+    time, kind, fret, length = match.groups()
+    return Note(time, kind=flags.NoteTypes(kind), fret=fret, length=length)
+
+
+def _parse_lyric_word(line):
+    match = RE_LYRIC_WORD.match(line)
+    if match is None:
+        return None
+    time, kind, evt = match.groups()
+    return Event(time, evt)
 
 
 def _parse_inst(fileobj, section_header):
@@ -150,22 +152,6 @@ def _parse_inst(fileobj, section_header):
             raise ValueError(f"Bad section line: {line}")
 
     return inst
-
-
-def _parse_lyric_note(line):
-    match = RE_NOTE.match(line)
-    if match is None:
-        return None
-    time, kind, fret, length = match.groups()
-    return Note(time, kind=flags.NoteTypes(kind), fret=fret, length=length)
-
-
-def _parse_lyric_word(line):
-    match = RE_LYRIC_WORD.match(line)
-    if match is None:
-        return None
-    time, kind, evt = match.groups()
-    return Event(time, evt)
 
 
 def _parse_note(line, islive=False):
@@ -201,6 +187,20 @@ def _parse_event(line):
         raise ValueError("Invalid Event: {line}")
     time, kind, evt = match.groups()
     return Event(int(time), evt.strip('"'))
+
+
+# Generator to easily parse section lines
+def _section_lines(fileobj):
+    while True:
+        # Read a line from file, stripping it of whitespace
+        line = fileobj.readline().strip()
+        # Ignore open brackets
+        if line == "{":
+            continue
+        # Stop looping after a closing bracket
+        if line == "}":
+            break
+        yield line
 
 
 def dump(chart, fileobj):
