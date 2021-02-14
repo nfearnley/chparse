@@ -198,7 +198,7 @@ def _parse_note(line, islive=False):
 def _parse_event(line):
     match = RE_EVENT.search(line)
     if not match:
-        return None
+        raise ValueError("Invalid Event: {line}")
     time, kind, evt = match.groups()
     return Event(int(time), evt.strip('"'))
 
