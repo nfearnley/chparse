@@ -9,7 +9,7 @@ RE_SECTION_HEADER = re.compile(r'\[([A-Za-z ]+)\]')
 RE_NAME_VALUE = re.compile(r'([A-Za-z][A-Za-z0-9_]*)\s*=\s*(.*)')
 RE_DIFFICULTY_KIND = re.compile(r'([A-Z][a-z]+)([A-Z][A-Za-z]+)')
 RE_NOTE = re.compile(r'([0-9]+)\s*=\s*([A-Z])\s+([0-9]+)\s+([0-9]+)')
-RE_EVENT = re.compile(r'([0-9]+)\s*=\s*(E)\s+"?([a-zA-Z]+)"?')
+RE_EVENT = re.compile(r'([0-9]+)\s*=\s*(E)\s+"?([a-zA-Z\*]+)"?')
 RE_LYRIC_WORD = re.compile(r'([0-9]+)\s*=\s*(E)\s+"?([a-zA-Z\-#.!]+)"?')
 
 
