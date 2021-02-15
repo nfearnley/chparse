@@ -18,16 +18,11 @@ class Track(list):
         if kind != () and event.kind not in kind:
             raise TypeError(f'Expected Event of type {kind.value} but got {event.kind.value}')
 
-    def append(self, event, kind=()):
+    def append(self, event, kind=(), sort=False):
         self._check_event(event, kind)
         super().append(event)
-
-    def add(self, event, kind=()):
-        """Add a event to this track.
-        It will be automatically inserted in the correct position.
-        """
-        self.append(event, kind)
-        self.sort()
+        if sort:
+            self.sort()
 
 
 class Lyrics(Track):
