@@ -27,7 +27,6 @@ Assuming your .chart file is named "notes.chart"...
     >>> chart.instruments[chparse.EXPERT][chparse.GUITAR][0]
     <Note: 0 = N 3 0 (<Flags.NONE: 0>)>
 """
-from .parse import load, dump   # noqa: F401
-from .flags import *            # noqa: F401,F403 pylint: disable=wildcard-import
+from .parse import load   # noqa: F401
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"

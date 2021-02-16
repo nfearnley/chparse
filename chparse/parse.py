@@ -1,4 +1,4 @@
-from chparse.blocks import Metadata, SongBlock
+from chparse.rawclasses import Metadata, SongBlock
 import sys
 
 """Parse (or unparse) a file to/from a Song object!"""

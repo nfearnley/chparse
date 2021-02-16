@@ -21,31 +21,26 @@ class SongFileException(DataBlockException):
     pass
 
 
+class InvalidNumberException(SongFileException):
+    def __init__(self, *args, **kwargs):
+        super().__init__("Invalid number", *args, **kwargs)
+
+
 class InvalidTimeException(SongFileException):
     def __init__(self, *args, **kwargs):
-        super().__init__("Invalid metadata", *args, **kwargs)
+        super().__init__("Invalid time", *args, **kwargs)
+
+
+class InvalidTrackHeaderException(SongFileException):
+    def __init__(self, *args, **kwargs):
+        super().__init__("Invalid track header", *args, **kwargs)
+
+
+class InvalidTrackItemException(SongFileException):
+    def __init__(self, *args, **kwargs):
+        super().__init__("Invalid track item", *args, **kwargs)
 
 
 class InvalidMetadataException(SongFileException):
     def __init__(self, *args, **kwargs):
         super().__init__("Invalid metadata", *args, **kwargs)
-
-
-class InvalidSyncEventException(SongFileException):
-    def __init__(self, *args, **kwargs):
-        super().__init__("Invalid sync event", *args, **kwargs)
-
-
-class InvalidEventException(SongFileException):
-    def __init__(self, *args, **kwargs):
-        super().__init__("Invalid event", *args, **kwargs)
-
-
-class InvalidLyricException(SongFileException):
-    def __init__(self, *args, **kwargs):
-        super().__init__("Invalid lyric", *args, **kwargs)
-
-
-class InvalidNoteException(SongFileException):
-    def __init__(self, *args, **kwargs):
-        super().__init__("Invalid instrument", *args, **kwargs)
